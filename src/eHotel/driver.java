@@ -84,6 +84,12 @@ import java.util.Calendar;
 		} catch (Exception e1) {System.out.println(e1);}
 		return updates;
 	}
+	
+	public String currentTime() //Gets the current time when accessed and returns it in a form of a string.
+	{
+		String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(Calendar.getInstance().getTime());
+		return(timeStamp);
+	}
 }
 
 
