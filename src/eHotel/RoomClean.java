@@ -11,12 +11,14 @@ import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class RoomClean extends JFrame 
 {
 	private JPanel contentPane;
-	static RoomClean frame = new RoomClean();
+	public static RoomClean frame = new RoomClean();
+	protected driver sqlDriver = new driver();
 	
 	public static void main(String[] args) 
 	{
@@ -46,7 +48,7 @@ public class RoomClean extends JFrame
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(95, 98, 358, 215);
+		panel.setBounds(95, 111, 358, 215);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -78,11 +80,21 @@ public class RoomClean extends JFrame
 		btnConfirm.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 10));
 		btnConfirm.setBounds(125, 110, 96, 29);
 		panel.add(btnConfirm);
+		btnConfirm.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				sqlDriver.updateClean(sqlDriver.currentTime(), LogIn.userDetails); //Updates the database staff table.
+				HomePage.frame.setVisible(true);
+				frame.dispose();
+			}
+		});
 		
 		JButton btnHome = new JButton("Home");
 		btnHome.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 7));
 		btnHome.setBounds(10, 338, 62, 29);
 		contentPane.add(btnHome);
+		
 		btnHome.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
@@ -104,32 +116,12 @@ public class RoomClean extends JFrame
 		
 		JPanel panel_1 = new JPanel();
 		panel_1.setBackground(new Color(255, 255, 255));
-		panel_1.setBounds(138, 78, 280, 5);
+		panel_1.setBounds(0, 78, 559, 5);
 		contentPane.add(panel_1);
 		
 		JPanel panel_2 = new JPanel();
 		panel_2.setBackground(Color.WHITE);
-		panel_2.setBounds(138, 22, 280, 5);
+		panel_2.setBounds(0, 17, 559, 5);
 		contentPane.add(panel_2);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(Color.WHITE);
-		panel_3.setBounds(138, 24, 10, 58);
-		contentPane.add(panel_3);
-		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(Color.WHITE);
-		panel_4.setBounds(408, 24, 10, 58);
-		contentPane.add(panel_4);
-		
-		JPanel panel_5 = new JPanel();
-		panel_5.setBackground(Color.WHITE);
-		panel_5.setBounds(-19, 48, 162, 10);
-		contentPane.add(panel_5);
-		
-		JPanel panel_6 = new JPanel();
-		panel_6.setBackground(Color.WHITE);
-		panel_6.setBounds(416, 48, 162, 10);
-		contentPane.add(panel_6);
 	}
 }

@@ -13,8 +13,13 @@ import javax.swing.border.EmptyBorder;
 
 public class TowelsRequest extends JFrame 
 {
-	private JPanel contentPane;
 	static TowelsRequest frame = new TowelsRequest();
+	protected driver sqlDriver = new driver();
+
+	/**
+	 * @param frame: The frame for the TowelsRequest class that makes it accessible to other objects
+	 * @param sqlDriver: driver class containing SQL back end logic
+	 */
 	
 	public static void main(String[] args) 
 	{
@@ -32,7 +37,7 @@ public class TowelsRequest extends JFrame
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 400);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBackground(new Color(255, 204, 51));
 		setContentPane(contentPane);
@@ -44,7 +49,7 @@ public class TowelsRequest extends JFrame
 		
 		JPanel panel = new JPanel();
 		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(95, 98, 358, 215);
+		panel.setBounds(95, 106, 358, 215);
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
@@ -77,6 +82,15 @@ public class TowelsRequest extends JFrame
 		btnConfirm.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 10));
 		btnConfirm.setBounds(129, 110, 96, 29);
 		panel.add(btnConfirm);
+		btnConfirm.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				HomePage.frame.setVisible(true);
+				sqlDriver.updateTowels(sqlDriver.currentTime(), LogIn.userDetails);
+				frame.dispose();
+			}
+		});
 		
 		JButton btnHome = new JButton("Home");
 		btnHome.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 7));

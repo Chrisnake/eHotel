@@ -17,20 +17,29 @@ import javax.swing.JComboBox;
 
 public class FoodRequest extends JFrame 
 {
-	private JPanel contentPane;
 	static FoodRequest frame = new FoodRequest();
+	/**
+	 * @param frame: The frame for the FoodRequest class that makes it accessible to other objects
+	 * @param sqlDriver: driver class containing SQL back end logic
+	 * @param Starters, Main, Desserts, Snacks, Drinks: String arrays containing the items for food ordering.
+	 */
 	
-	protected String[] Starters = new String[]{"", "Beans and Toasted Bread: £3.00", "Canarian Potatoes with Mojo: £4.50", "Beef Tapsilog and fried egg: £5.00", "Wedges seasoned with Salt, Pepper and Cumin: £3.50",
-											   "Garlic Bread: £2.00", "Chili Nachos with Pulled Pork: £4.00", "Bulalo Beef Soup: £5.00", "Assorted Chicken Wings: £5.00"};
+	protected String[] Starters = new String[]
+	{"", "Beans and Toasted Bread: £3.00", "Canarian Potatoes with Mojo: £4.50", "Beef Tapsilog and fried egg: £5.00", "Wedges seasoned with Salt, Pepper and Cumin: £3.50",
+	"Garlic Bread: £2.00", "Chili Nachos with Pulled Pork: £4.00", "Bulalo Beef Soup: £5.00", "Assorted Chicken Wings: £5.00"};
 	
-	protected String[] Main = new String[]{"", "Pan Roasted Porkchop w/Potatoes, Vegetables : £10.00", "Duck and Waffle: £11.00", "Indian Curry w/Pata Bread, Basmati Rice: £10.00", "Chinese Style Vegetable Stir Fry: £8.00",
-			   							   "Crispy Pork Belly w/Fried Rice, Spinach: £10.00", "Filipino Chicken Adobo w/Fried Rice: £10.00", "British Sunday Roast w/Potatoes, Vegetables: £10.00", "Beef Spaghetti w/Meatballs, Garlic Bread : £9.50"};
+	protected String[] Main = new String[]
+	{"", "Pan Roasted Porkchop w/Potatoes, Vegetables : £10.00", "Duck and Waffle: £11.00", "Indian Curry w/Pata Bread, Basmati Rice: £10.00", "Chinese Style Vegetable Stir Fry: £8.00",
+	"Crispy Pork Belly w/Fried Rice, Spinach: £10.00", "Filipino Chicken Adobo w/Fried Rice: £10.00", "British Sunday Roast w/Potatoes, Vegetables: £10.00", "Beef Spaghetti w/Meatballs, Garlic Bread : £9.50"};
 	
-	protected String[] Desserts = new String[]{"", "Chocolate Ice Cream Waffle: £4.00", "Vanilla Ice Cream Waffle: £4.00", "Strawberry Ice Cream Waffle: £4.00", "Chocolate Brownie Ice Cream: £4.00", "Heavenly Slice of Chocolate Cake: £3.00", "Soft Filipino Mamon Cake: £4.00"};
+	protected String[] Desserts = new String[]
+	{"", "Chocolate Ice Cream Waffle: £4.00", "Vanilla Ice Cream Waffle: £4.00", "Strawberry Ice Cream Waffle: £4.00", "Chocolate Brownie Ice Cream: £4.00", "Heavenly Slice of Chocolate Cake: £3.00", "Soft Filipino Mamon Cake: £4.00"};
 	
-	protected String[] Snacks = new String[]{"", "Walkers Ready Salted Crisps: £1.00", "Walkers Salt and Vinegar Crisps: £1.00", "Walkers Prawn Cocktail Crisps: £1.00", "Kit Kat Bar: £1.00", "Kinder Buneo Bar: £1.00", "Haribos Tangtastics: £2.00", "Skittles minipack: £1.00"};
+	protected String[] Snacks = new String[]
+	{"", "Walkers Ready Salted Crisps: £1.00", "Walkers Salt and Vinegar Crisps: £1.00", "Walkers Prawn Cocktail Crisps: £1.00", "Kit Kat Bar: £1.00", "Kinder Buneo Bar: £1.00", "Haribos Tangtastics: £2.00", "Skittles minipack: £1.00"};
 	
-	protected String[] Drinks = new String[]{"", "Bottled Mineral Water: £2.00", "Coca Cola Can: £1.00", "Sprite Can: £1.00", "Fanta Fruit Twist Can: £1.00", "Fresh Orange Juice: £2.00", "Fresh Apple Juice: £2.00"};
+	protected String[] Drinks = new String[]
+	{"", "Bottled Mineral Water: £2.00", "Coca Cola Can: £1.00", "Sprite Can: £1.00", "Fanta Fruit Twist Can: £1.00", "Fresh Orange Juice: £2.00", "Fresh Apple Juice: £2.00"};
 	
 	public static void main(String[] args) 
 	{
@@ -48,7 +57,7 @@ public class FoodRequest extends JFrame
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 400);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBackground(new Color(255, 204, 51));
 		setContentPane(contentPane);

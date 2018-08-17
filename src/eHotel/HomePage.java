@@ -1,24 +1,26 @@
 package eHotel;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
-import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
+import javax.swing.JTextField;
 
 public class HomePage extends JFrame 
 {
-	private JPanel contentPane;
 	static HomePage frame = new HomePage();
+	/**
+	 * @param frame: The frame for the HomePage class that makes it accessible to other objects
+	 * @param sqlDriver: driver class containing SQL back end logic
+	 */
 	
 	public static void main(String[] args) 
 	{
@@ -36,7 +38,7 @@ public class HomePage extends JFrame
 	{
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 550, 400);
-		contentPane = new JPanel();
+		JPanel contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setBackground(new Color(255, 204, 51));
 		setContentPane(contentPane);
@@ -60,31 +62,71 @@ public class HomePage extends JFrame
 		welcomeLabel.setBounds(342, 36, 150, 39);
 		contentPane.add(welcomeLabel);
 	
-		JLabel usernameLabel = new JLabel("Christian!");
+		JLabel usernameLabel = new JLabel("");
+		usernameLabel.setHorizontalAlignment(SwingConstants.CENTER);
+		usernameLabel.setText(LogIn.username);
 		usernameLabel.setForeground(Color.BLACK);
 		usernameLabel.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 22));
 		usernameLabel.setBackground(Color.BLACK);
-		usernameLabel.setBounds(363, 67, 88, 39);
+		usernameLabel.setBounds(288, 67, 244, 39);
 		contentPane.add(usernameLabel);
 		
 		JPanel logoPanel2 = new JPanel();
 		logoPanel2.setBackground(new Color(255, 255, 255));
-		logoPanel2.setBounds(0, 23, 276, 10);
+		logoPanel2.setBounds(0, 25, 276, 5);
 		contentPane.add(logoPanel2);
 		
 		JPanel logoPanel1 = new JPanel();
 		logoPanel1.setBackground(Color.WHITE);
-		logoPanel1.setBounds(0, 96, 276, 10);
+		logoPanel1.setBounds(0, 96, 276, 5);
 		contentPane.add(logoPanel1);
+		
+		JLabel label = new JLabel("★★★★");
+		label.setForeground(Color.WHITE);
+		label.setFont(new Font("Apple SD Gothic Neo", Font.BOLD, 25));
+		label.setBounds(85, 300, 267, 48);
+		contentPane.add(label);
+		
+		JLabel lblStarHotel = new JLabel("4 STAR HOTELS");
+		lblStarHotel.setForeground(Color.WHITE);
+		lblStarHotel.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 20));
+		lblStarHotel.setBounds(63, 330, 141, 48);
+		contentPane.add(lblStarHotel);
+		
+		JPanel panel = new JPanel();
+		panel.setBackground(new Color(255, 255, 255));
+		panel.setBounds(266, 0, 284, 378);
+		contentPane.add(panel);
+		panel.setLayout(null);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(-636, 277, 920, 78);
+		panel.add(lblNewLabel);
+		lblNewLabel.setIcon(new ImageIcon("/Users/christianvillegas/Documents/Summer Project/eHotel/homeImage.jpg"));
 		
 		/*
 		 * JButton componenets
 		 */
+
+		JButton btnOrderFood = new JButton("Order Food");
+		btnOrderFood.setBounds(87, 212, 117, 29);
+		panel.add(btnOrderFood);
+		btnOrderFood.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 10));
+		
+		JButton btnRequestTowels = new JButton("Request Towels");
+		btnRequestTowels.setBounds(87, 182, 117, 29);
+		panel.add(btnRequestTowels);
+		btnRequestTowels.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 10));
+		
+		JButton btnRoomClean = new JButton("Room Clean");
+		btnRoomClean.setBounds(87, 152, 117, 29);
+		panel.add(btnRoomClean);
+		btnRoomClean.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 10));
 		
 		JButton btnLobbyMessenger = new JButton("Lobby messenger");
+		btnLobbyMessenger.setBounds(87, 122, 117, 29);
+		panel.add(btnLobbyMessenger);
 		btnLobbyMessenger.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 10));
-		btnLobbyMessenger.setBounds(352, 148, 117, 29);
-		contentPane.add(btnLobbyMessenger);
 		btnLobbyMessenger.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
@@ -93,11 +135,6 @@ public class HomePage extends JFrame
 				frame.dispose();
 			}
 		});	
-		
-		JButton btnRoomClean = new JButton("Room Clean");
-		btnRoomClean.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 10));
-		btnRoomClean.setBounds(352, 178, 117, 29);
-		contentPane.add(btnRoomClean);
 		btnRoomClean.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
@@ -106,12 +143,6 @@ public class HomePage extends JFrame
 				frame.dispose();
 			}
 		});	
-		
-		
-		JButton btnRequestTowels = new JButton("Request Towels");
-		btnRequestTowels.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 10));
-		btnRequestTowels.setBounds(352, 208, 117, 29);
-		contentPane.add(btnRequestTowels);
 		btnRequestTowels.addActionListener(new ActionListener() 
 		{ 
 			public void actionPerformed(ActionEvent e) 
@@ -120,11 +151,6 @@ public class HomePage extends JFrame
 				frame.dispose();
 			}
 		});	
-		
-		JButton btnOrderFood = new JButton("Order Food");
-		btnOrderFood.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 10));
-		btnOrderFood.setBounds(352, 238, 117, 29);
-		contentPane.add(btnOrderFood);
 		btnOrderFood.addActionListener(new ActionListener() 
 		{ 
 			public void actionPerformed(ActionEvent e) 
@@ -133,12 +159,6 @@ public class HomePage extends JFrame
 				frame.dispose();
 			}
 		});	
-		
-		JPanel panel = new JPanel();
-		panel.setBackground(new Color(255, 255, 255));
-		panel.setBounds(266, 0, 284, 378);
-		contentPane.add(panel);
-		panel.setLayout(null);
 	}
 
 }

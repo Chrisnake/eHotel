@@ -21,7 +21,11 @@ public class Messenger extends JFrame
 {
 	private JPanel contentPane;
 	static Messenger frame = new Messenger();
-
+	/**
+	 * @param frame: The frame for the Messenger class that makes it accessible to other objects
+	 * @param sqlDriver: driver class containing SQL back end logic
+	 */
+	
 	public static void main(String[] args) 
 	{
 		EventQueue.invokeLater(new Runnable() 
@@ -44,46 +48,16 @@ public class Messenger extends JFrame
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblWelcomeToEhotel = new JLabel("eHOTELS");
-		lblWelcomeToEhotel.setForeground(new Color(255, 255, 255));
-		lblWelcomeToEhotel.setFont(new Font("Apple SD Gothic Neo", Font.BOLD | Font.ITALIC, 50));
-		lblWelcomeToEhotel.setBackground(Color.BLACK);
-		lblWelcomeToEhotel.setBounds(170, 25, 215, 62);
-		contentPane.add(lblWelcomeToEhotel);
+		/*
+		 * JPanel and JLabel componenets
+		 */
 		
-		JPanel panel_1 = new JPanel();
-		panel_1.setBackground(new Color(255, 255, 255));
-		panel_1.setBounds(138, 78, 280, 5);
-		contentPane.add(panel_1);
-		
-		JPanel panel_2 = new JPanel();
-		panel_2.setBackground(Color.WHITE);
-		panel_2.setBounds(138, 22, 280, 5);
-		contentPane.add(panel_2);
-		
-		JPanel panel_3 = new JPanel();
-		panel_3.setBackground(Color.WHITE);
-		panel_3.setBounds(138, 24, 10, 58);
-		contentPane.add(panel_3);
-		
-		JPanel panel_4 = new JPanel();
-		panel_4.setBackground(Color.WHITE);
-		panel_4.setBounds(408, 24, 10, 58);
-		contentPane.add(panel_4);
-		
-		JPanel panel_5 = new JPanel();
-		panel_5.setBackground(Color.WHITE);
-		panel_5.setBounds(-19, 48, 162, 10);
-		contentPane.add(panel_5);
-		
-		JPanel panel_6 = new JPanel();
-		panel_6.setBackground(Color.WHITE);
-		panel_6.setBounds(416, 48, 162, 10);
-		contentPane.add(panel_6);
+		RoomClean logo = new RoomClean();
+		logo.logoElements(contentPane);
 		
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setBounds(106, 95, 339, 181);
+		scrollPane.setBounds(106, 115, 339, 181);
 		contentPane.add(scrollPane);
 		
 		JScrollBar scrollBar = new JScrollBar();
@@ -99,15 +73,19 @@ public class Messenger extends JFrame
 		lblLobbyWelomeTo.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 12));
 		scrollPane.setColumnHeaderView(lblLobbyWelomeTo);
 		
+		/*
+		 * JButton and JTextField componenets
+		 */
+		
 		JButton btnNewButton = new JButton("SEND");
 		btnNewButton.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 12));
-		btnNewButton.setBounds(337, 288, 108, 44);
+		btnNewButton.setBounds(337, 308, 108, 44);
 		contentPane.add(btnNewButton);
 		
 		JTextField textField = new JTextField();
 		textField.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 12));
 		textField.setToolTipText("Type your message here");
-		textField.setBounds(102, 288, 233, 44);
+		textField.setBounds(102, 308, 233, 44);
 		contentPane.add(textField);
 		textField.setColumns(10);
 	}
