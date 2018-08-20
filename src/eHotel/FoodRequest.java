@@ -18,6 +18,8 @@ import javax.swing.JComboBox;
 public class FoodRequest extends JFrame 
 {
 	static FoodRequest frame = new FoodRequest();
+	protected driver sqlDriver = new driver();
+	
 	/**
 	 * @param frame: The frame for the FoodRequest class that makes it accessible to other objects
 	 * @param sqlDriver: driver class containing SQL back end logic
@@ -131,13 +133,6 @@ public class FoodRequest extends JFrame
 		btnHome.setBounds(6, 263, 62, 29);
 		panel.add(btnHome);
 		btnHome.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 7));
-		
-		JButton btnOrder = new JButton("Order");
-		btnOrder.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 7));
-		btnOrder.setBounds(290, 260, 62, 29);
-		panel.add(btnOrder);
-		
-		
 		btnHome.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e) 
@@ -147,7 +142,26 @@ public class FoodRequest extends JFrame
 			}
 		});
 		
-		ImageIcon imageIcon = new ImageIcon(new ImageIcon("/Users/christianvillegas/Documents/Summer Project/eHotel/menu .jpeg").getImage().getScaledInstance(1000, 1000, Image.SCALE_DEFAULT));
+		JButton btnOrder = new JButton("Order");
+		btnOrder.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 7));
+		btnOrder.setBounds(290, 260, 62, 29);
+		panel.add(btnOrder);
+		btnOrder.addActionListener(new ActionListener() 
+		{
+			public void actionPerformed(ActionEvent e) 
+			{
+				String starters = (String) StarterscomboBox.getSelectedItem();
+				String menu = (String) MenucomboBox.getSelectedItem();
+				String dessert = (String) DessertcomboBox.getSelectedItem();
+				String snacks = (String) SnackscomboBox.getSelectedItem();
+				String drinks = (String) DrinkscomboBox.getSelectedItem();
+				
+				String userOrder = starters + " : " + menu + " : " + dessert + " : " + snacks + " : " + drinks + " ";
+				sqlDriver.updateOrders(sqlDriver.currentTime(), LogIn.roomNo, userOrder);
+				HomePage.frame.setVisible(true);
+				frame.dispose();
+			}
+		});
 		
 		JLabel foodLabel = new JLabel("ORDER FROM OUR MENU");
 		foodLabel.setBounds(234, 20, 282, 39);
@@ -162,9 +176,9 @@ public class FoodRequest extends JFrame
 		lblfood.setForeground(new Color(102, 102, 102));
 		lblfood.setFont(new Font("Apple SD Gothic Neo", Font.ITALIC, 15));
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setBounds(-605, 0, 797, 378);
-		contentPane.add(lblNewLabel);
-		lblNewLabel.setIcon(new ImageIcon("/Users/christianvillegas/Documents/Summer Project/eHotel/menu .jpeg"));
+		JLabel foodImage = new JLabel("New label");
+		foodImage.setBounds(-605, 0, 797, 378);
+		contentPane.add(foodImage);
+		foodImage.setIcon(new ImageIcon("/Users/christianvillegas/Documents/Summer Project/eHotel/menu .jpeg"));
 	}
 }

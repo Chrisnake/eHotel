@@ -12,12 +12,16 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JTextArea;
 import javax.swing.JLabel;
+import javax.swing.JScrollPane;
+import javax.swing.JTabbedPane;
+import java.awt.BorderLayout;
+import javax.swing.SwingConstants;
 
 public class Staff extends JFrame {
 
 	public static Staff frame = new Staff();
 	protected driver sqlDriver = new driver();
-
+	public static JTextArea textArea = new JTextArea();
 	/**
 	 * @param frame: The frame for the FoodRequest class that makes it accessible to other objects
 	 * @param sqlDriver: driver class containing SQL back end logic
@@ -45,39 +49,36 @@ public class Staff extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		/*
-		 * JPanel and JLabel componenets
-		 */
-
-		JButton btnLobbyMessenger = new JButton("Lobby messenger");
-		btnLobbyMessenger.setBounds(89, 315, 117, 29);
-		contentPane.add(btnLobbyMessenger);
-		btnLobbyMessenger.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 10));
-		btnLobbyMessenger.addActionListener(new ActionListener() 
-		{
-			public void actionPerformed(ActionEvent e) 
-			{
-				Messenger.frame.setVisible(true);
-				frame.dispose();
-			}
-		});
+		JTabbedPane tabbedPane = new JTabbedPane(JTabbedPane.TOP);
+		tabbedPane.setBackground(Color.WHITE);
+		tabbedPane.setBounds(30, 54, 484, 301);
+		contentPane.add(tabbedPane);
 		
-		JTextArea textArea = new JTextArea();
-		textArea.setLineWrap(true);
-		textArea.setWrapStyleWord(true);
-		textArea.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 11));
-		textArea.setBounds(302, 22, 248, 356);
-		updatetextArea(textArea);
-		contentPane.add(textArea);
+		JPanel LiveUpdates = new JPanel();
+		LiveUpdates.setBackground(Color.WHITE);
+		tabbedPane.addTab("Live Updates", null, LiveUpdates, null);
+		LiveUpdates.setLayout(new BorderLayout(0, 0));
 		
-		JPanel panel = new JPanel();
-		panel.setBackground(Color.WHITE);
-		panel.setBounds(302, -1, 248, 23);
-		contentPane.add(panel);
-		
-		JLabel lblLiveUpdates = new JLabel("Live Updates");
-		panel.add(lblLiveUpdates);
+		JLabel lblLiveUpdates = new JLabel("Towel and Room Clean Live Updates");
+		lblLiveUpdates.setHorizontalAlignment(SwingConstants.CENTER);
+		LiveUpdates.add(lblLiveUpdates, BorderLayout.NORTH);
 		lblLiveUpdates.setFont(new Font("Apple SD Gothic Neo", Font.BOLD, 15));
+		
+		JScrollPane scrollPane = new JScrollPane();
+		LiveUpdates.add(scrollPane, BorderLayout.CENTER);
+		
+		textArea = new JTextArea();
+		textArea.setFont(new Font("Apple SD Gothic Neo", Font.PLAIN, 13));
+		scrollPane.setViewportView(textArea);
+		updatetextArea(textArea);
+		
+		JPanel FoodOrders = new JPanel();
+		FoodOrders.setBackground(Color.WHITE);
+		tabbedPane.addTab("Food Orders", null, FoodOrders, null);
+		
+		JPanel CleanUp = new JPanel();
+		CleanUp.setBackground(Color.WHITE);
+		tabbedPane.addTab("Room Clean", null, CleanUp, null);
 		
 	}
 	
